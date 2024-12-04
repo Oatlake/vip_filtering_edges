@@ -233,8 +233,7 @@ plt.tight_layout()
 plt.show()
 plt.close()
 
-# Canny (or similar) edge detection. Describe the parameter values and their impact on the result. Select what you think 
-# is a set of good parameter values, apply, show and decribe the result.
+# Canny (or similar) edge detection. Describe the parameter values and their impact on the result. Select what you think is a set of good parameter values, apply, show and decribe the result.
 
 # apply gaussian smoothing before applying Canny
 filtered_image = gaussian_filter(gray_mandrill, sigma=1) 
@@ -251,84 +250,3 @@ plt.tight_layout()
 plt.show()
 plt.close()
 
-# Experiment and testing
-
-# Part 3: Some experiments to understand how the different sigmas influence the edges detection
-
-# Sigma set - small values
-sigmas_small = [0.5, 1, 2, 3]
-results_small = [laplacian_of_gaussian(gray_mandrill, sigma) for sigma in sigmas_small]
-
-# Sigma set - medium values
-sigmas_medium = [4, 5, 6, 7]
-results_medium = [laplacian_of_gaussian(gray_mandrill, sigma) for sigma in sigmas_medium]
-
-# Sigma set - large values 
-sigmas_large = [8, 9, 10, 11]
-results_large = [laplacian_of_gaussian(gray_mandrill, sigma) for sigma in sigmas_large]
-
-# Plot the results for the first set of sigmas (small values)
-plt.figure(figsize=(12, 8))
-for i, sigma in enumerate(sigmas_small):
-    plt.subplot(2, 2, i + 1)
-    plt.imshow(results_small[i], cmap='gray')
-    plt.title(f"LoG (sigma={sigma})")
-    plt.axis('off')
-plt.tight_layout()
-plt.show()
-
-# Plot the results for the second set of sigmas (medium values)
-plt.figure(figsize=(12, 8))
-for i, sigma in enumerate(sigmas_medium):
-    plt.subplot(2, 2, i + 1)
-    plt.imshow(results_medium[i], cmap='gray')
-    plt.title(f"LoG (sigma={sigma})")
-    plt.axis('off')
-plt.tight_layout()
-plt.show()
-
-# Plot the results for the third set of sigmas (large values)
-plt.figure(figsize=(12, 8))
-for i, sigma in enumerate(sigmas_large):
-    plt.subplot(2, 2, i + 1)
-    plt.imshow(results_large[i], cmap='gray')
-    plt.title(f"LoG (sigma={sigma})")
-    plt.axis('off')
-plt.tight_layout()
-plt.show()
-
-# Sigma set - small values
-sigmas_small = [0.5, 1, 2, 3]
-gradient_magnitudes = []
-
-for sigma in sigmas_small:
-    grad_mag = gradient_magnitude_gaussian(gray_mandrill, sigma)
-    gradient_magnitudes.append((sigma, grad_mag))
-
-plt.figure(figsize=(12, 8))
-for i, (sigma, grad_mag) in enumerate(gradient_magnitudes):
-    plt.subplot(2, 2, i + 1)
-    plt.imshow(grad_mag, cmap='gray')
-    plt.title(f"Gradient Magnitude (σ={sigma})")
-    plt.axis('off')
-plt.tight_layout()
-plt.show()
-plt.close()
-
-# Sigma set - large values 
-sigmas_large = [8, 9, 10, 11]
-gradient_magnitudes = []
-
-for sigma in sigmas_large:
-    grad_mag = gradient_magnitude_gaussian(gray_mandrill, sigma)
-    gradient_magnitudes.append((sigma, grad_mag))
-
-plt.figure(figsize=(12, 8))
-for i, (sigma, grad_mag) in enumerate(gradient_magnitudes):
-    plt.subplot(2, 2, i + 1)
-    plt.imshow(grad_mag, cmap='gray')
-    plt.title(f"Gradient Magnitude (σ={sigma})")
-    plt.axis('off')
-plt.tight_layout()
-plt.show()
-plt.close()
